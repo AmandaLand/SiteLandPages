@@ -1,4 +1,11 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+// Wix and other site builders render embeds inside a very tall iframe. In that
+// context viewport-height units reflect the entire document, not the visible
+// browser window, so the embedded layout uses a width-based canvas instead.
+if (window.self !== window.top) {
+  document.documentElement.classList.add('is-embedded');
+}
+
 const header = document.querySelector('[data-header]');
 const toggle = document.querySelector('[data-menu-toggle]');
 const nav = document.querySelector('[data-nav]');
