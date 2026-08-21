@@ -562,3 +562,32 @@ html.is-embedded .contact {
   .footer-social { margin-right:0; }
   .landcast-grid { grid-template-columns:minmax(0,1fr); gap:14px; }
 }
+
+/* Keep this block last: Wix gives the iframe the height of the complete page,
+   which would otherwise turn 100svh into several thousand pixels. */
+html.is-embedded body { overflow-x:hidden; }
+html.is-embedded .intro-sequence { display:none !important; }
+html.is-embedded .hero {
+  height:auto !important;
+  min-height:820px !important;
+}
+html.is-embedded .hero-grid {
+  flex:0 0 auto !important;
+  min-height:740px !important;
+  padding-top:100px !important;
+  padding-bottom:32px !important;
+}
+html.is-embedded .manifesto,
+html.is-embedded .contact {
+  min-height:760px !important;
+}
+
+@media (max-width:820px) {
+  html.is-embedded .hero,
+  html.is-embedded .hero-grid,
+  html.is-embedded .manifesto,
+  html.is-embedded .contact {
+    min-height:auto !important;
+  }
+  html.is-embedded .hero-grid { padding-top:96px !important; }
+}

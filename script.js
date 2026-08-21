@@ -15,7 +15,7 @@ const introSkip=document.querySelector('[data-intro-skip]');
 if(introSequence&&introCanvas instanceof HTMLCanvasElement){
   let introFrame=0,start=0;
   const finish=()=>{cancelAnimationFrame(introFrame);introSequence.classList.add('is-complete');document.body.classList.remove('intro-active')};
-  if(reducedMotion.matches)finish();else{
+  if(reducedMotion.matches||window.self!==window.top)finish();else{
     document.body.classList.add('intro-active');
     const ctx=introCanvas.getContext('2d',{alpha:true});
     const points=Array.from({length:132},(_,i)=>{const y=1-i/131*2,r=Math.sqrt(1-y*y),a=Math.PI*(3-Math.sqrt(5))*i;return{x:Math.cos(a)*r,y,z:Math.sin(a)*r,seed:(i*37)%101}});
